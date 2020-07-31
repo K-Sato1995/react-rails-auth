@@ -1,0 +1,11 @@
+<img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg">
+<h1>RoR Auth0 Sample</h1>
+<p>Step 1 - Login.</p>
+<%= button_to 'Login', 'auth/auth0', method: :post %>
+
+
+  <% if session[:userinfo] %>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="<%= 'active' if params[:controller] == 'logout' %>"><a id="qsLogoutBtn" href="/logout">Logout</a></li>
+    </ul>
+  <% end %>
