@@ -6,6 +6,10 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
+      <ul>
+        <li>email: test1@example.com</li>
+        <li>pass: aZ111111</li>
+      </ul>
       <button onClick={() => logout()}>Log Out</button>
     </div>
   );

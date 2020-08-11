@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Auth0
   class UsersController < ApplicationController
     include Secured
@@ -8,18 +10,10 @@ module Auth0
     end
 
     def create
-      user = auth0_client.create_user()
-      if message.save
-        render json: { status: 'SUCCESS', data: message }
-      else
-        render json: { status: 'ERROR', data: message.errors }
-      end
-      @user = auth0_client.users
-      # def create_user(name, options = {})
-      #   request_params = Hash[options.map { |(k, v)| [k.to_sym, v] }]
-      #   request_params[:name] = name
-      #   post(users_path, request_params)
-      # end
+      user = auth0_client.create_user(params[:email], { "email": params[:email], "connection": "Username-Password-Authentication", "password": "Password1234" })
+      render json: { status: 'SUCCESS', data: user }
+    rescue => e
+      render json: { status: 'ERROR', data: e.message }
     end
 
     private
@@ -32,6 +26,10 @@ module Auth0
         api_version: 2,
         timeout: 15 # optional, defaults to 10
       )
+    end
+
+    def user_params
+      params.require(:user).permit(:email)
     end
   end
 end
