@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
-import Login from "./Login";
+import Login from "./components/Login";
 ReactDOM.render(
   <React.StrictMode>
     <Router>

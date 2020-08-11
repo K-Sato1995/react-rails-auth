@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import MessageList from "./MessageList";
 import Users from "./Users";
 import Home from "./Home";
+import CreateUser from "./CreateUser";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/messages" component={MessageList} />
       <Route exact path="/users" component={Users} />
+      <Route exact path="/create_user" component={CreateUser} />
     </div>
   );
 }

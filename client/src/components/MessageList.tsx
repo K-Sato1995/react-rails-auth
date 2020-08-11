@@ -1,14 +1,14 @@
 import React from "react";
-import { useApi } from "./hooks/useApi";
+import { useApi } from "../hooks/useApi";
 
-const Users = () => {
+const MessageList = () => {
   const opts = {
     audience: "http://localhost3000/api",
     scope: "read:messages",
   };
 
   const { loading, error, refresh, data } = useApi(
-    "http://localhost:3000/auth0/users",
+    "http://localhost:3000/messages",
     opts
   );
 
@@ -16,12 +16,12 @@ const Users = () => {
 
   return (
     <div>
-      <h1>Users</h1>
-      {data.data.map((user, index) => {
-        return <li key={index}>{user.name}</li>;
+      <h1>MessageList</h1>
+      {data.data.map((message, index) => {
+        return <li key={index}>{message.title}</li>;
       })}
     </div>
   );
 };
 
-export default Users;
+export default MessageList;
