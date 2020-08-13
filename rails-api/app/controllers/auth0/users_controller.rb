@@ -2,7 +2,7 @@ require 'securerandom'
 
 module Auth0
   class UsersController < ApplicationController
-    # include Secured
+    include Secured
 
     def index
       users = auth0_client.users

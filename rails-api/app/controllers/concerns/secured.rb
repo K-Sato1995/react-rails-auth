@@ -8,8 +8,8 @@ module Secured
 
 
   SCOPES = {
-    '/private' => nil,
-    '/private-scoped'    => ['read:messages']
+    'auth0/messages'    => ['read:messages'],
+    'auth0/users'    => ['read:messages']
   }
 
   private

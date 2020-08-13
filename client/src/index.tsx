@@ -15,6 +15,7 @@ ReactDOM.render(
         audience={process.env.REACT_APP_AUDIENCE || ""}
         scope={process.env.REACT_APP_CLIENT_SCOPE || ""}
         redirectUri={window.location.origin}
+        useRefreshTokens={true}
       >
         <Route exact path="/login" component={Login} />
         <App />
