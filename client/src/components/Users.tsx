@@ -17,6 +17,7 @@ const Users = () => {
   return (
     <div>
       <h1>Users</h1>
+      {console.log(data.data)}
       {data.data.map((user, index) => {
         return <li key={index}>{user.name}</li>;
       })}

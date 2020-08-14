@@ -1,14 +1,14 @@
-# frozen_string_literal: true
+ # frozen_string_literal: true
 module Secured
   extend ActiveSupport::Concern
 
   included do
-    before_action :authenticate_request!
+    before_action :authenticate_request!, :create_user
   end
 
 
   SCOPES = {
-    'auth0/messages'    => ['read:messages'],
+    'messages'    => ['read:messages'],
     'auth0/users'    => ['read:messages']
   }
 
@@ -16,10 +16,13 @@ module Secured
 
   def authenticate_request!
     @auth_payload, @auth_header = auth_token
-
     render json: { errors: ['Insufficient scope'] }, status: :unauthorized unless scope_included
   rescue JWT::VerificationError, JWT::DecodeError
     render json: { errors: ['Not Authenticated'] }, status: :unauthorized
+  end
+
+  def create_user
+    User.find_or_create_by(auth0_id: @auth_payload["sub"])
   end
 
   def scope_included
