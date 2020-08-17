@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "email": "rails-user-123@example.com",
+    "custom_password_hash": {
+      "hash": {
+        "value": "$2a$12$zkMGwV3ANMxxgaT7hxtOle/GLZnfNQ1lAiRFwNa0ozuc8/63kkquy"
+      },
+      "algorithm": "bcrypt"
+    }
+  }
+]
