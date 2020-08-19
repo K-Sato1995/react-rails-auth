@@ -1,5 +1,17 @@
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "http://k-sato-0130.com" }
+  
   # Settings specified here will take precedence over those in config/application.rb.
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'apikey',
+    :password => ENV.fetch("SENDGRID_API_KEY", "your_sendgrid_username"),
+    :domain => ENV.fetch("SMTP_DOMAIN", "staging.property.synca.cloud"),
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

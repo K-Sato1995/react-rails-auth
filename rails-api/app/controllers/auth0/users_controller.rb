@@ -25,6 +25,10 @@ module Auth0
 
     private
 
+    def send_password_set_email
+      # UserNotifierMailer.yo_email().deliver
+    end
+
     def auth0_client
       @auth0_client ||= Auth0Client.new(
         client_id: ENV['CLIENT_ID'],
